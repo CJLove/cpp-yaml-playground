@@ -25,6 +25,17 @@ std::ostream &operator<<(std::ostream &os, const Sample &s)
     for (const auto &item: s.top_dict) {
         os << "  " << item.first << ": " << item.second << "\n";
     }
-    
+        for (const auto &item: s.nested_list) {
+        os << "  ListElt" << "\n";
+        for (const auto &subitem: item) {
+            os << "    " << subitem << "\n";
+        }
+    }
+    for (const auto &item: s.nested_dict) {
+        os << "  " << item.first << "\n";
+        for (const auto &subitem: item.second) {
+            os << "    " << subitem.first << ": " << subitem.second << "\n";
+        }
+    }
     return os;
 }

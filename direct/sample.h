@@ -88,6 +88,34 @@ struct convert<Sample>
 
             }
 
+        if (node["nested-list"])
+            try {
+                for (const auto &item: node["nested-list"]) {
+                    std::vector<std::string> l;
+                    for (const auto &subitem: item) {
+                        l.push_back(subitem.as<std::string>());
+                    }
+                    rhs.nested_list.push_back(l);
+                }
+            }
+            catch (...) {
+
+            }
+
+        if (node["nested-dict"])
+            try {
+                for (const auto &item: node["nested-dict"]) {
+                    std::map<std::string,std::string> m;
+                    for (const auto &subitem: item.second) {
+                        m[subitem.first.as<std::string>()] = subitem.second.as<std::string>();
+                    }
+                    rhs.nested_dict[item.first.as<std::string>()] = m;
+                }
+            }
+            catch (...) {
+
+            }
+
         return true;
     }
 };

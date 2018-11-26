@@ -12,10 +12,10 @@ top-dict:
   key3: value3
 
 nested-list:
-  - item1:
+  - 
     - nested-item1-subitem1
     - nested-item1-subitem2
-  - item2:
+  - 
     - nested-item2=subitem1
     - nested-item2-subitem2
 
